@@ -6,7 +6,7 @@ struct Rectangle {
 
 impl Rectangle {
     fn area(&self) -> u32 {
-        return self.width * self.height;
+        self.width * self.height
     }
 
     fn can_hold(&self, other: &Rectangle) -> bool {
@@ -14,7 +14,7 @@ impl Rectangle {
             return true;
         }
 
-        return false;
+        false
     }
 
     fn square(size: u32) -> Self {
