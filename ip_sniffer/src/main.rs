@@ -84,7 +84,7 @@ fn main() {
         });
     }
 
-    let mut out = vec![];
+    let mut out: Vec<u16> = vec![];
     drop(tx);
     for port in rx {
         out.push(port);
