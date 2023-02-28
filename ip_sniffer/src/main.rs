@@ -6,6 +6,7 @@ use std::{env, io, process, thread};
 const DEFAULT_THREADS_NUM: u16 = 4;
 const MAX_PORT: u16 = 65535;
 
+#[derive(Debug)]
 struct Arguments {
     flag: String,
     ip_addr: IpAddr,
@@ -69,6 +70,8 @@ fn main() {
             process::exit(0)
         }
     });
+
+    println!("{:?}", arguments);
 
     let num_threads = arguments.threads;
     let addr = arguments.ip_addr;
