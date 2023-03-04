@@ -119,11 +119,11 @@ impl Game {
     pub fn add_food(&mut self) {
         let mut rng = thread_rng();
 
-        let mut food_x = rng.gen_range(1, self.width - 1);
-        let mut food_y = rng.gen_range(1, self.height - 1);
+        let mut food_x = rng.gen_range(1..self.width - 1);
+        let mut food_y = rng.gen_range(1..self.height - 1);
         while self.snake.overlap_tail(food_x, food_y) {
-            food_x = rng.gen_range(1, self.width - 1);
-            food_y = rng.gen_range(1, self.height - 1);
+            food_x = rng.gen_range(1..self.width - 1);
+            food_y = rng.gen_range(1..self.height - 1);
         }
 
         self.food_x = food_x;
@@ -144,7 +144,7 @@ impl Game {
 
     fn restart(&mut self) {
         self.snake = Snake::new(2, 2);
-        self.waiting_time = 0.0;
+        self.waiting_time_second = 0.0;
         self.food_exists = true;
         self.food_x = 6;
         self.food_y = 4;
