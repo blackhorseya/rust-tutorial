@@ -4,7 +4,7 @@ use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
-const ADDR: &str = "0.0.0.0:5000";
+const ADDR: &str = "0.0.0.0:5001";
 const MSG_SIZE: usize = 32;
 
 fn sleep() {
@@ -49,7 +49,7 @@ fn main() {
         }
 
         if let Ok(msg) = rx.try_recv() {
-            clients
+            clients = clients
                 .into_iter()
                 .filter_map(|mut client| {
                     let mut buff = msg.clone().into_bytes();
